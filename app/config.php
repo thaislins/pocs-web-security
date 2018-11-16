@@ -3,7 +3,7 @@
 function create_connection() {
 	$servername = "localhost";
 	$username = "admin";
-	$password = "3JGw6qOAwqYo";
+	$password = "admin";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password);

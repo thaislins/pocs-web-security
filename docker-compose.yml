@@ -1,0 +1,31 @@
+version: '3'
+services:
+    php:
+        build: .
+        ports:
+            - "8080:80"
+        volumes:
+            - ./app:/var/www/html/
+        depends_on:
+            - mysql
+    mysql:
+        image: mysql:5.7
+        ports:
+            - "8083:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=pocs_security
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=admin
+        volumes:
+            - ./data:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=mysql
+        restart: always
+        ports:
+            - "8081:80"
+        depends_on:
+            - mysql
