@@ -44,7 +44,8 @@ a:hover {
 }
 /*=== 4. Main Form ===*/
 .login-form-1 {
-  max-width: 300px;
+  width: 400px;
+  max-width: 100%;
   border-radius: 5px;
   display: inline-block;
 }
@@ -70,19 +71,20 @@ a:hover {
   color: #999999;
 }
 .login-form-1 .form-group {
-  margin-bottom: 0;
-  border-bottom: 2px solid #efefef;
-  padding-right: 20px;
+  border: 2px solid #efefef;
+  border-radius: 15px;
+  padding: 0 10px;
   position: relative;
-}
-.login-form-1 .form-group:last-child {
-  border-bottom: 0;
+  margin: 15px 30px 15px 0;
 }
 .login-group {
   background: #ffffff;
   color: #999999;
   border-radius: 8px;
   padding: 10px 20px;
+}
+.login-form-1 .login-group-checkbox {
+  border: none;
 }
 .login-group-checkbox {
   padding: 5px 0;
@@ -287,7 +289,7 @@ label:hover:before {
 }
 
 .comment-write {
-  padding: 10px 100px; 
+  padding: 10px 100px;
 }
 
 .comment-button {

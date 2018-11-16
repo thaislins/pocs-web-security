@@ -18,7 +18,7 @@ services:
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
         volumes:
-            - ./data:/var/lib/mysql
+            - ./mysql:/var/lib/mysql
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         environment:
