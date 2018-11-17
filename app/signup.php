@@ -1,6 +1,8 @@
 <?php
+require_once('config.php');
+
 $page = 'Sign up';
-include('layout/headers.php');
+$error = '';
 
 $name = $_POST['reg_fullname'] ?? '';
 $username = $_POST['reg_username'] ?? '';
@@ -8,12 +10,14 @@ $password = $_POST['reg_password'] ?? '';
 $conf_password = $_POST['reg_password_confirm'] ?? '';
 
 if ($name and $username and $password and $conf_password) {
-	require_once('config.php');
-	if (register_user($name, $username, $password, $conf_password)) {
-		header("location:index.php");
+	$error = register_user($name, $username, $password, $conf_password);
+	if (!$error) {
+		header('Location: index.php');
 		exit();
 	}
 }
+
+include('layout/headers.php');
 ?>
 
 <!-- REGISTRATION FORM -->
@@ -24,6 +28,7 @@ if ($name and $username and $password and $conf_password) {
 		<form id="register-form" class="text-left" method="POST" action="signup.php">
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
+				<?= $error ?>
 				<div class="login-group">
 					<div class="form-group">
 						<label for="reg_fullname" class="sr-only">Full Name</label>
@@ -41,7 +46,6 @@ if ($name and $username and $password and $conf_password) {
 						<label for="reg_password_confirm" class="sr-only">Password Confirm</label>
 						<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
 					</div>
-
 
 					<div class="form-group login-group-checkbox">
 						<input type="checkbox" class="" id="reg_agree" name="reg_agree">
