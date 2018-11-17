@@ -1,5 +1,11 @@
 <?php
 $page = 'Search User';
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php');
+}
+
 include('../layout/headers.php');
 ?>
 
