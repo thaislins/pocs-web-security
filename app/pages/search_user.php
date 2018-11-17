@@ -1,4 +1,6 @@
 <?php
+require_once('../includes/config.php');
+
 $page = 'Search User';
 session_start();
 
