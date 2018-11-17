@@ -1,5 +1,11 @@
 <?php
 $page = 'Dashboard';
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php');
+}
+
 include('layout/headers.php');
 ?>
 
@@ -19,7 +25,7 @@ include('layout/headers.php');
 				<a href="pages/change_password.php" class="custom-button">
 					<i class="fa fa-lock"></i>&nbsp; <span>Change Password</span>
 				</a>
-				<a href="#" class="custom-button">
+				<a href="logout.php" class="custom-button">
 					<i class="fa fa-sign-out"></i>&nbsp; <span>Log out</span>
 				</a>
 			</div>
