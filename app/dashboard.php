@@ -8,16 +8,22 @@ include('layout/headers.php');
 	<div class="logo">dashboard</div>
 	<!-- Main Form -->
 	<div class="login-form-1">
-		<form id="register-form" class="text-left">
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="reg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="write a comment">
-					</div>
-				</div>
+		<div class="main-login-form">
+			<div class="login-group buttons-group">
+				<a href="#" class="custom-button">
+					<i class="fa fa-users"></i>&nbsp; <span>Search User</span>
+				</a>
+				<a href="#" class="custom-button">
+					<i class="fa fa-comments"></i>&nbsp; <span>Post a Comment</span>
+				</a>
+				<a href="#" class="custom-button">
+					<i class="fa fa-lock"></i>&nbsp; <span>Change Password</span>
+				</a>
+				<a href="#" class="custom-button">
+					<i class="fa fa-sign-out"></i>&nbsp; <span>Log out</span>
+				</a>
 			</div>
-		</form>
+		</div>
 	</div>
 	<!-- end:Main Form -->
 </div>
