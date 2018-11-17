@@ -1,5 +1,5 @@
 <?php
-$title = 'PoCs Web Security - ' . ($page ?? 'Home')
+$title = 'PoCs Web Security - '.($page ?? 'Home');
 ?>
 
 <!DOCTYPE html>

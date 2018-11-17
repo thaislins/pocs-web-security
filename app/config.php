@@ -1,7 +1,7 @@
 <?php
 
 function create_connection() {
-	$servername = "localhost";
+	$servername = "mysql";
 	$username = "admin";
 	$password = "admin";
 
@@ -21,7 +21,7 @@ function register_user($name, $username, $password, $conf_password) {
 		return false;
 	} 
 
-	$sql = "INSERT INTO users (firstname, lastname, email, pswd) 
+	$sql = "INSERT INTO user (name, username, password) 
     VALUES ('$name', '$username', '$password')";
 
     mysqli_select_db($conn, $database);
@@ -33,5 +33,4 @@ function register_user($name, $username, $password, $conf_password) {
     mysqli_close($conn);
     return true;
 }
-
 ?>
