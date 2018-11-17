@@ -1,10 +1,10 @@
 <?php
-$page = 'Login';
-include('layout/headers.php');
+$page = 'Search User';
+include('../layout/headers.php');
 ?>
 
 <div class="text-center" style="padding:50px 0">
-    <div class="logo">login</div>
+    <div class="logo">search user</div>
     <!-- Main Form -->
     <div class="login-form-1">
         <form action="dashboard.php" id="login-form" class="text-left">
@@ -13,21 +13,14 @@ include('layout/headers.php');
                 <div class="login-group">
                     <div class="form-group">
                         <label for="lg_username" class="sr-only">Username</label>
-                        <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="lg_password" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+                        <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="enter user id">
                     </div>
                 </div>
                 <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="etc-login-form">
-                <p>new user? <a href="signup.php">create new account</a></p>
             </div>
         </form>
     </div>
     <!-- end:Main Form -->
 </div>
 
-<?php include('layout/footer.php') ?>
+<?php include('../layout/footer.php') ?>
