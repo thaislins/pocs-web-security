@@ -2,6 +2,9 @@
 require_once('../includes/config.php');
 
 $page = 'Search User';
+$error = '';
+$success = '';
+
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -13,7 +16,7 @@ if (!isset($_SESSION['user'])) {
     if ($comment and $user_id) {
         $error = post_comment($user_id, $comment);
         if (!$error) {
-            echo 'Comment posted';
+            $success = 'Comment posted';
         }
     }
 }
@@ -26,6 +29,12 @@ include('../layout/headers.php');
     <!-- Main Form -->
     <div class="login-form-1">
         <form id="login-form" class="text-left" method="POST" action="comment.php">
+            <?php if ($error): ?>
+                <div class="alert alert-danger"><?= $error ?></div>
+            <?php endif; ?>
+            <?php if ($success): ?>
+                <div class="alert alert-success"><?= $success ?></div>
+            <?php endif; ?>
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">

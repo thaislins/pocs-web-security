@@ -2,19 +2,23 @@
 require_once('../includes/config.php');
 
 $page = 'Search User';
+$error = '';
+$success = '';
+
+$password = $_POST['password'];
+$conf_password = $_POST['conf_password'];
+
 session_start();
 
 if (!isset($_SESSION['user'])) {
     header('Location: ../index.php');
-} else {
+} else if ($password and $conf_password) {
     $password = MD5($_POST['password'] ?? '');
     $conf_password = MD5($_POST['conf_password'] ?? '');
 
-    if ($password and $conf_password) {
-        $error = change_password($_SESSION['user'], $password, $conf_password);
-        if (!$error) {
-            echo 'Password changed';
-        }
+    $error = change_password($_SESSION['user'], $password, $conf_password);
+    if (!$error) {
+        $success = 'Password changed';
     }
 }
 
@@ -26,6 +30,12 @@ include('../layout/headers.php');
     <!-- Main Form -->
     <div class="login-form-1">
         <form id="login-form" class="text-left" method="POST" action="change_password.php">
+            <?php if ($error): ?>
+                <div class="alert alert-danger"><?= $error ?></div>
+            <?php endif; ?>
+            <?php if ($success): ?>
+                <div class="alert alert-success"><?= $success ?></div>
+            <?php endif; ?>
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
