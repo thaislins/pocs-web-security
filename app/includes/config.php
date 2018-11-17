@@ -80,3 +80,20 @@ function change_password($username, $password, $conf_password) {
 	return $error_msg;
 }
 
+function search_user($username) {
+	$select_id = "SELECT id,name, password FROM user WHERE username='$username'";
+
+	$conn = create_connection();
+	$result = mysqli_query($conn, $select_id) or die("select error");
+
+	
+	if(mysqli_num_rows($result) > 0 ){
+		$row = mysqli_fetch_assoc($result);
+		$user_id =  $row['id'];
+		$name = $row['name'];
+		$password = $row['password'];
+	}
+
+	mysqli_close($conn);
+}
+
