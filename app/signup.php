@@ -28,15 +28,19 @@ include('layout/headers.php');
 		<form id="register-form" class="text-left" method="POST" action="signup.php">
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
-				<?= $error ?>
+				<?php if ($error): ?>
+					<div class="alert alert-danger">
+						<?= $error ?>
+					</div>
+				<?php endif; ?>
 				<div class="login-group">
 					<div class="form-group">
 						<label for="reg_fullname" class="sr-only">Full Name</label>
-						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" value="<?= $name ?>">
 					</div>
 					<div class="form-group">
 						<label for="reg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username" value="<?= $username ?>">
 					</div>
 					<div class="form-group">
 						<label for="reg_password" class="sr-only">Password</label>

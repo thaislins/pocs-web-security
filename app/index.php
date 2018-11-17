@@ -25,11 +25,15 @@ include('layout/headers.php');
 		<form id="login-form" class="text-left">
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
-				<?= $error ?>
+				<?php if ($error): ?>
+					<div class="alert alert-danger">
+						<?= $error ?>
+					</div>
+				<?php endif; ?>
 				<div class="login-group">
 					<div class="form-group">
 						<label for="lg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
+						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username" value="<?= $username ?>">
 					</div>
 					<div class="form-group">
 						<label for="lg_password" class="sr-only">Password</label>
