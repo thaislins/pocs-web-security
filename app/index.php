@@ -1,6 +1,17 @@
 <?php
 $page = 'Login';
 include('layout/headers.php');
+
+$username = $_GET['lg_username'];
+$password = MD5($_GET['lg_password']);
+
+if ($username and $password) {
+    require_once('config.php');
+    if (user_login($username, $password)) {
+        header("location:dashboard.php");
+        exit();
+    }
+}
 ?>
 
 <div class="text-center" style="padding:50px 0">

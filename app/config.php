@@ -33,4 +33,22 @@ function register_user($name, $username, $password, $conf_password) {
     mysqli_close($conn);
     return true;
 }
+
+function user_login($username, $password) {
+	$conn = create_connection();
+	$database = 'pocs_security';
+
+	$sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+
+    mysqli_select_db($conn, $database);
+    $check = mysqli_query($conn, $sql) or die("erro ao selecionar")
+
+    if (mysqli_num_rows($check) <= 0) {
+    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return false;
+    } 
+    
+    mysqli_close($conn);
+    return true;
+}
 ?>
