@@ -5,7 +5,7 @@ include('layout/headers.php');
 
 <!-- REGISTRATION FORM -->
 <div class="text-center" style="padding:50px 0">
-	<div class="logo">comments</div>
+	<div class="logo">dashboard</div>
 	<!-- Main Form -->
 	<div class="login-form-1">
 		<form id="register-form" class="text-left">
@@ -16,7 +16,6 @@ include('layout/headers.php');
 						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="write a comment">
 					</div>
 				</div>
-				<button type="submit" class="comment-button"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</form>
 	</div>

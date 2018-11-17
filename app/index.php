@@ -1,6 +1,7 @@
 <?php
 $page = 'Login';
 include('layout/headers.php');
+phpinfo();
 ?>
 
 <div class="text-center" style="padding:50px 0">

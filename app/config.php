@@ -6,14 +6,32 @@ function create_connection() {
 	$password = "admin";
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password);
+	$conn = mysqli_connect($servername, $username, $password) or die("Connection failed: " . $conn->connect_error);
 
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
 	echo "Connected successfully";
 
-	return $conn
+	return $conn;
 }
+
+function register_user($name, $username, $password, $conf_password) {
+	$conn = create_connection();
+	$database = 'pocs_security';
+
+	if ($password != $conf_password) {
+		return false;
+	} 
+
+	$sql = "INSERT INTO users (firstname, lastname, email, pswd) 
+    VALUES ('$name', '$username', '$password')";
+
+    mysqli_select_db($conn, $database);
+
+    if (!mysqli_query($conn, $sql)) {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+    return true;
+}
+
 ?>

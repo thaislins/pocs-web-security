@@ -1,17 +1,34 @@
 <?php
 $page = 'Sign up';
 include('layout/headers.php');
+
+$name = $_POST['reg_fullname'] ?? '';
+$username = $_POST['reg_username'] ?? '';
+$password = $_POST['reg_password'] ?? '';
+$conf_password = $_POST['reg_password_confirm'] ?? '';
+
+if ($name and $username and $password and $conf_password) {
+	require_once('config.php');
+	if (register_user($name, $username, $password, $conf_password)) {
+		header('Location: /');
+	}
+}
+
 ?>
 
 <!-- REGISTRATION FORM -->
 <div class="text-center" style="padding:50px 0">
-	<div class="logo">register</div>
+	<div class="logo">sign up</div>
 	<!-- Main Form -->
 	<div class="login-form-1">
-		<form id="register-form" class="text-left">
+		<form id="register-form" class="text-left" method="POST" action="signup.php">
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
 				<div class="login-group">
+					<div class="form-group">
+						<label for="reg_fullname" class="sr-only">Full Name</label>
+						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+					</div>
 					<div class="form-group">
 						<label for="reg_username" class="sr-only">Username</label>
 						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
@@ -25,10 +42,6 @@ include('layout/headers.php');
 						<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
 					</div>
 
-					<div class="form-group">
-						<label for="reg_fullname" class="sr-only">Full Name</label>
-						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
-					</div>
 
 					<div class="form-group login-group-checkbox">
 						<input type="checkbox" class="" id="reg_agree" name="reg_agree">
