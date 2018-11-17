@@ -22,7 +22,7 @@ function register_user($name, $username, $password, $conf_password) {
 
 	$conn = create_connection();
 	$query_exec = mysqli_query($conn, $sql);
-	$error_msg = $query_exec ? '' : mysqli_error($conn) . "<br>Query: $sql";
+	$error_msg = $query_exec ? '' : mysqli_error($conn) . "Error while registering user";
 	mysqli_close($conn);
 
 	return $error_msg;
@@ -52,10 +52,6 @@ function select_user_id($username) {
 		return $user_id;
 	}
 
-
-	//$sql = "INSERT INTO comment (user_id, comment) VALUES ('$user_id', '$comment')";
-	//$query_exec = mysqli_query($conn, $sql);
-	//$error_msg = $query_exec ? '' : mysqli_error($conn) . "<br>Query: $sql";
 	mysqli_close($conn);
 }
 
@@ -64,8 +60,23 @@ function post_comment($user_id, $comment) {
 
 	$conn = create_connection();
 	$query_exec = mysqli_query($conn, $sql);
-	$error_msg = $query_exec ? '' : mysqli_error($conn) . "<br>Query: $sql";
+	$error_msg = $query_exec ? '' : mysqli_error($conn) . "Comment cannot be posted";
 	mysqli_close($conn);
 
 	return $error_msg;
 }
+
+function change_password($username, $password, $conf_password) {
+	if ($password != $conf_password) {
+		return 'Passwords don\'t match';
+	}
+	$sql = "UPDATE user SET password='$password' WHERE username='$username'";
+
+	$conn = create_connection();
+	$query_exec = mysqli_query($conn, $sql);
+	$error_msg = $query_exec ? '' : mysqli_error($conn) . "Error, cannot change password";
+	mysqli_close($conn);
+
+	return $error_msg;
+}
+

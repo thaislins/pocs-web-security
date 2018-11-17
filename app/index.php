@@ -12,7 +12,6 @@ if ($username and $password) {
 	$error = user_login($username, $password);
 	if (!$error) {
         $_SESSION['user'] = $username;
-        $_SESSION['pass'] = $password;
         header('Location: dashboard.php');
         exit();
     }
