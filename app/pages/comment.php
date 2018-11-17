@@ -46,6 +46,9 @@ include('../layout/headers.php');
                 <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
             </div>
         </form>
+        <a href="/dashboard.php" class="custom-button pull-left">
+            <i class="fa fa-chevron-left"></i>&nbsp; <span>Back to Dashboard</span>
+        </a>
     </div>
     <!-- end:Main Form -->
 </div>
