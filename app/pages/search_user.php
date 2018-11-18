@@ -1,15 +1,14 @@
 <?php
+require_once('../includes/globals.php');
 require_once('../includes/config.php');
 
 $page = 'Search User';
 $users = false;
-session_start();
 
 if (!isset($_SESSION['user'])) {
     header('Location: /');
 } else {
     $username = $_GET['lg_username'];
-    session_start();
 
     if ($username) {
         $users = search_user($username);

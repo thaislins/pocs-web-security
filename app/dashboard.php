@@ -1,4 +1,6 @@
 <?php
+require_once('includes/globals.php');
+
 $page = 'Dashboard';
 session_start();
 

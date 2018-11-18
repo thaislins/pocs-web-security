@@ -1,4 +1,5 @@
 <?php
+require_once('includes/globals.php');
 require_once('includes/config.php');
 
 $page = 'Login';
@@ -6,7 +7,6 @@ $error = '';
 
 $username = $_GET['lg_username'];
 $password = MD5($_GET['lg_password']);
-session_start();
 
 if ($username and $password) {
 	$error = user_login($username, $password);

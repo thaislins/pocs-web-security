@@ -1,4 +1,5 @@
 <?php
+require_once('includes/globals.php');
 require_once('includes/config.php');
 
 $page = 'Sign up';

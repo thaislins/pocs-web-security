@@ -1,4 +1,5 @@
 <?php
+require_once('../includes/globals.php');
 require_once('../includes/config.php');
 
 $page = 'Search User';
@@ -7,8 +8,6 @@ $success = '';
 
 $password = $_POST['password'];
 $conf_password = $_POST['conf_password'];
-
-session_start();
 
 if (!isset($_SESSION['user'])) {
     header('Location: /');
