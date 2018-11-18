@@ -313,3 +313,15 @@ label:hover:before {
 .custom-button:hover {
   background-color: #fafafa
 }
+
+dl.inline dt::after {
+  content: ':\00a0';
+}
+
+dl.inline dt, dd {
+  float: left;
+}
+
+dl.inline dt {
+  clear: both;
+}
