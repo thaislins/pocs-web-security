@@ -10,8 +10,6 @@ session_start();
 if (!isset($_SESSION['user'])) {
     header('Location: /');
 } else {
-    $comments = list_comments($_SESSION['user']);
-    var_dump($comments);
     $comment = $_POST['comment'] ?? '';
     $user_id = select_user_id($_SESSION['user']);
 
@@ -19,10 +17,12 @@ if (!isset($_SESSION['user'])) {
         $error = post_comment($user_id, $comment);
         if (!$error) {
             $success = 'Comment posted';
+
         }
     }
 }
 
+$comments = list_comments($_SESSION['user']);
 include('../layout/headers.php');
 ?>
 
@@ -47,6 +47,24 @@ include('../layout/headers.php');
                 </div>
                 <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
             </div>
+                <?php
+                    if (!empty($comments)):
+                        foreach ($comments as $comm):
+                    ?>
+                            <hr>
+                            <dl class="inline">
+                                <dt>ID</dt>
+                                <dd><?= $comm['id'] ?></dd>
+                                <dt>Name</dt>
+                                <dd><?= $_SESSION['user'] ?></dd>
+                                <dt>Comment</dt>
+                                <dd><?= $comm['comment'] ?></dd>
+                            </dl>
+                            <div class="clearfix"></div>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
         </form>
         <a href="/dashboard.php" class="custom-button pull-left">
             <i class="fa fa-chevron-left"></i>&nbsp; <span>Back to Dashboard</span>

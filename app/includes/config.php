@@ -95,7 +95,6 @@ function search_user($username) {
 function list_comments($username) {
 	$user_id = select_user_id($username);
 	$select = "SELECT id, user_id, comment FROM comment WHERE user_id='$user_id'";
-	echo $select;
 
 	$conn = create_connection();
 	$result = mysqli_query($conn, $select) or die("select error");
