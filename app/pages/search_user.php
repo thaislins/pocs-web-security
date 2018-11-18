@@ -2,6 +2,7 @@
 require_once('../includes/config.php');
 
 $page = 'Search User';
+$users = array();
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -11,7 +12,8 @@ if (!isset($_SESSION['user'])) {
     session_start();
 
     if ($username) {
-        search_user($username);
+        $users = search_user($username);
+        var_dump($users);
     }
 }
 
