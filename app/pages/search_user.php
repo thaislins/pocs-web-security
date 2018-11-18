@@ -35,23 +35,23 @@ include('../layout/headers.php');
                         <button type="submit" class="login-button" style="right: -45px"><i class="fa fa-chevron-right"></i></button>
                     </div>
                     <?php if ($users !== false and empty($users)): ?>
-                        <p>No user found.</p>
+                        <p class="text-center">No user found.</p>
                     <?php
                     elseif (!empty($users)):
                         foreach ($users as $user):
                     ?>
-                            <hr>
-                            <dl class="inline">
-                                <dt>ID</dt>
-                                <dd><?= $user['id'] ?></dd>
-                                <dt>Name</dt>
-                                <dd><?= $user['name'] ?></dd>
-                                <dt>Username</dt>
-                                <dd><?= $user['username'] ?></dd>
-                                <dt>Password</dt>
-                                <dd><?= $user['password'] ?></dd>
-                            </dl>
-                            <div class="clearfix"></div>
+                        <hr>
+                        <dl class="inline">
+                            <dt>ID</dt>
+                            <dd><?= $user['id'] ?></dd>
+                            <dt>Name</dt>
+                            <dd><?= $user['name'] ?></dd>
+                            <dt>Username</dt>
+                            <dd><?= $user['username'] ?></dd>
+                            <dt>Password</dt>
+                            <dd><?= $user['password'] ?></dd>
+                        </dl>
+                        <div class="clearfix"></div>
                     <?php
                         endforeach;
                     endif;

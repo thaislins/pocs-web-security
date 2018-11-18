@@ -40,31 +40,35 @@ include('../layout/headers.php');
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
-                    <div class="form-group">
-                        <label for="lg_comment" class="sr-only">comment</label>
-                        <input type="text" class="form-control" id="lg_comment" name="comment" placeholder="enter a comment">
+                    <div style="position: relative;">
+                        <div class="form-group">
+                            <label for="lg_comment" class="sr-only">comment</label>
+                            <input type="text" class="form-control" id="lg_comment" name="comment" placeholder="enter a comment">
+                        </div>
+                        <button type="submit" class="login-button" style="right: -45px"><i class="fa fa-chevron-right"></i></button>
                     </div>
-                </div>
-                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-            </div>
-                <?php
-                    if (!empty($comments)):
+                    <?php if (empty($comments)): ?>
+                        <p class="text-center">No comment found.</p>
+                    <?php
+                    else:
                         foreach ($comments as $comm):
                     ?>
-                            <hr>
-                            <dl class="inline">
-                                <dt>ID</dt>
-                                <dd><?= $comm['id'] ?></dd>
-                                <dt>Name</dt>
-                                <dd><?= $_SESSION['user'] ?></dd>
-                                <dt>Comment</dt>
-                                <dd><?= $comm['comment'] ?></dd>
-                            </dl>
-                            <div class="clearfix"></div>
+                        <hr>
+                        <dl class="inline">
+                            <dt>ID</dt>
+                            <dd><?= $comm['id'] ?></dd>
+                            <dt>Author</dt>
+                            <dd><?= $_SESSION['user'] ?></dd>
+                            <dt>Comment</dt>
+                            <dd><?= $comm['comment'] ?></dd>
+                        </dl>
+                        <div class="clearfix"></div>
                     <?php
                         endforeach;
                     endif;
                     ?>
+                </div>
+            </div>
         </form>
         <a href="/dashboard.php" class="custom-button pull-left">
             <i class="fa fa-chevron-left"></i>&nbsp; <span>Back to Dashboard</span>

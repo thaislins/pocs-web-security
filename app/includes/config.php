@@ -45,14 +45,14 @@ function select_user_id($username) {
 	$conn = create_connection();
 	$result = mysqli_query($conn, $select_id) or die("select error");
 
-	
+	$user_id = null;
 	if(mysqli_num_rows($result) > 0 ){
 		$row = mysqli_fetch_assoc($result);
 		$user_id =  $row['id'];
-		return $user_id;
 	}
 
 	mysqli_close($conn);
+	return $user_id;
 }
 
 function post_comment($user_id, $comment) {
