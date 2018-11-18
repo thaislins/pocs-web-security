@@ -8,8 +8,10 @@ $success = '';
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: ../index.php');
+    header('Location: /');
 } else {
+    $comments = list_comments($_SESSION['user']);
+    var_dump($comments);
     $comment = $_POST['comment'] ?? '';
     $user_id = select_user_id($_SESSION['user']);
 

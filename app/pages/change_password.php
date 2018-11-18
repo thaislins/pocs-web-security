@@ -11,7 +11,7 @@ $conf_password = $_POST['conf_password'];
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: ../index.php');
+    header('Location: /');
 } else if ($password and $conf_password) {
     $password = MD5($_POST['password'] ?? '');
     $conf_password = MD5($_POST['conf_password'] ?? '');

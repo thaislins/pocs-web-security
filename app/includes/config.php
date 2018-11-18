@@ -81,14 +81,28 @@ function change_password($username, $password, $conf_password) {
 }
 
 function search_user($username) {
-	$select_id = "SELECT id, username, name, password FROM user WHERE username='$username'";
+	$select = "SELECT id, username, name, password FROM user WHERE username='$username'";
 
 	$conn = create_connection();
-	$result = mysqli_query($conn, $select_id) or die("select error");
+	$result = mysqli_query($conn, $select) or die("select error");
 
 	$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	mysqli_close($conn);
 
 	return $users;
+}
+
+function list_comments($username) {
+	$user_id = select_user_id($username);
+	$select = "SELECT id, user_id, comment FROM comment WHERE user_id='$user_id'";
+	echo $select;
+
+	$conn = create_connection();
+	$result = mysqli_query($conn, $select) or die("select error");
+
+	$comments = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	mysqli_close($conn);
+
+	return $comments;
 }
 

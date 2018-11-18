@@ -6,7 +6,7 @@ $users = false;
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: ../index.php');
+    header('Location: /');
 } else {
     $username = $_GET['lg_username'];
     session_start();
