@@ -6,14 +6,14 @@ $page = 'Search User';
 $error = '';
 $success = '';
 
-$password = $_POST['password'];
-$conf_password = $_POST['conf_password'];
+$password = $GET['password'];
+$conf_password = $GET['conf_password'];
 
 if (!isset($_SESSION['user'])) {
     header('Location: /');
 } else if ($password and $conf_password) {
-    $password = MD5($_POST['password'] ?? '');
-    $conf_password = MD5($_POST['conf_password'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $conf_password = $_POST['conf_password'] ?? '';
 
     $error = change_password($_SESSION['user'], $password, $conf_password);
     if (!$error) {
@@ -28,7 +28,7 @@ include('../layout/headers.php');
     <div class="logo">change password</div>
     <!-- Main Form -->
     <div class="login-form-1">
-        <form id="login-form" class="text-left" method="POST" action="change_password.php">
+        <form id="login-form" class="text-left">
             <?php if ($error): ?>
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>

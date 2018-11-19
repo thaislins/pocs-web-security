@@ -14,9 +14,13 @@ function create_connection() {
 }
 
 function register_user($name, $username, $password, $conf_password) {
+	$password = sha1($password);
+	$conf_password = sha1($conf_password);
+
 	if ($password != $conf_password) {
 		return 'Passwords don\'t match';
 	}
+
 
 	$sql = "INSERT INTO user (name, username, password) VALUES ('$name', '$username', '$password')";
 
@@ -29,6 +33,7 @@ function register_user($name, $username, $password, $conf_password) {
 }
 
 function user_login($username, $password) {
+	$password = sha1($password);
 	$sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
 
 	$conn = create_connection();
@@ -45,14 +50,14 @@ function select_user_id($username) {
 	$conn = create_connection();
 	$result = mysqli_query($conn, $select_id) or die("select error");
 
-	$user_id = null;
+	
 	if(mysqli_num_rows($result) > 0 ){
 		$row = mysqli_fetch_assoc($result);
 		$user_id =  $row['id'];
+		return $user_id;
 	}
 
 	mysqli_close($conn);
-	return $user_id;
 }
 
 function post_comment($user_id, $comment) {
@@ -67,9 +72,13 @@ function post_comment($user_id, $comment) {
 }
 
 function change_password($username, $password, $conf_password) {
+	$password = sha1($password);
+	$conf_password = sha1($conf_password);
+
 	if ($password != $conf_password) {
 		return 'Passwords don\'t match';
 	}
+
 	$sql = "UPDATE user SET password='$password' WHERE username='$username'";
 
 	$conn = create_connection();
@@ -80,8 +89,8 @@ function change_password($username, $password, $conf_password) {
 	return $error_msg;
 }
 
-function search_user($username) {
-	$select = "SELECT id, username, name, password FROM user WHERE username='$username'";
+function search_user($user_id) {
+	$select = "SELECT id, username, name FROM user WHERE id='$user_id'";
 
 	$conn = create_connection();
 	$result = mysqli_query($conn, $select) or die("select error");

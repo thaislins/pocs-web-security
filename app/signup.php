@@ -7,8 +7,8 @@ $error = '';
 
 $name = $_POST['reg_fullname'] ?? '';
 $username = $_POST['reg_username'] ?? '';
-$password = MD5($_POST['reg_password'] ?? '');
-$conf_password = MD5($_POST['reg_password_confirm'] ?? '');
+$password = $_POST['reg_password'] ?? '';
+$conf_password = $_POST['reg_password_confirm'] ?? '';
 
 if ($name and $username and $password and $conf_password) {
 	$error = register_user($name, $username, $password, $conf_password);

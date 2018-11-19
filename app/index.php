@@ -6,7 +6,7 @@ $page = 'Login';
 $error = '';
 
 $username = $_GET['lg_username'];
-$password = MD5($_GET['lg_password']);
+$password = $_GET['lg_password'];
 
 if ($username and $password) {
 	$error = user_login($username, $password);

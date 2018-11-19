@@ -29,14 +29,16 @@ include('../layout/headers.php');
                     <div style="position: relative;">
                         <div class="form-group">
                             <label for="lg_username" class="sr-only">Username</label>
-                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="enter username" value="<?= $username ?>">
+                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="enter user id" value="<?= $username ?>">
                         </div>
                         <button type="submit" class="login-button" style="right: -45px"><i class="fa fa-chevron-right"></i></button>
                     </div>
                     <?php if ($users !== false and empty($users)): ?>
+                        <p>A busca por <strong><?= $username ?></strong> retornou: <br></p>
                         <p class="text-center">No user found.</p>
                     <?php
                     elseif (!empty($users)):
+                        echo "A busca por <strong>$username</strong> retornou: <br>";
                         foreach ($users as $user):
                     ?>
                         <hr>
@@ -47,8 +49,6 @@ include('../layout/headers.php');
                             <dd><?= $user['name'] ?></dd>
                             <dt>Username</dt>
                             <dd><?= $user['username'] ?></dd>
-                            <dt>Password</dt>
-                            <dd><?= $user['password'] ?></dd>
                         </dl>
                         <div class="clearfix"></div>
                     <?php

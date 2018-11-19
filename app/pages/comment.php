@@ -54,8 +54,6 @@ include('../layout/headers.php');
                     ?>
                         <hr>
                         <dl class="inline">
-                            <dt>ID</dt>
-                            <dd><?= $comm['id'] ?></dd>
                             <dt>Author</dt>
                             <dd><?= $_SESSION['user'] ?></dd>
                             <dt>Comment</dt>
