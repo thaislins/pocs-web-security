@@ -38,7 +38,7 @@ include('../layout/headers.php');
                         <p class="text-center">No user found.</p>
                     <?php
                     elseif (!empty($users)):
-                        echo "A busca por <strong>$user_id</strong> retornou: <br>";
+                        echo "The search for <strong>$user_id</strong> returned: <br>";
                         foreach ($users as $user):
                     ?>
                         <hr>
