@@ -8,10 +8,10 @@ $users = false;
 if (!isset($_COOKIE['user'])) {
     header('Location: /');
 } else {
-    $username = $_GET['lg_username'];
+    $user_id = $_GET['user_id'];
 
-    if ($username) {
-        $users = search_user($username);
+    if ($user_id) {
+        $users = search_user($user_id);
     }
 }
 
@@ -28,17 +28,17 @@ include('../layout/headers.php');
                 <div class="login-group">
                     <div style="position: relative;">
                         <div class="form-group">
-                            <label for="lg_username" class="sr-only">Username</label>
-                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="enter user id" value="<?= $username ?>">
+                            <label for="lg_user_id" class="sr-only">user_id</label>
+                            <input type="text" class="form-control" id="lg_user_id" name="user_id" placeholder="enter user id" value="<?= $username ?>">
                         </div>
                         <button type="submit" class="login-button" style="right: -45px"><i class="fa fa-chevron-right"></i></button>
                     </div>
                     <?php if ($users !== false and empty($users)): ?>
-                        <p>A busca por <strong><?= $username ?></strong> retornou: <br></p>
+                        <p>The search for <strong><?= $user_id ?></strong> returned: <br></p>
                         <p class="text-center">No user found.</p>
                     <?php
                     elseif (!empty($users)):
-                        echo "A busca por <strong>$username</strong> retornou: <br>";
+                        echo "A busca por <strong>$user_id</strong> retornou: <br>";
                         foreach ($users as $user):
                     ?>
                         <hr>
