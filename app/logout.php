@@ -1,6 +1,8 @@
 <?php
-session_start();
-session_destroy();
-header('Location: /');
-exit;
+if (isset($_COOKIE['user'])) {
+	unset($_COOKIE['user']);
+	setcookie('user', null, -1);
+	header('Location: /');
+	exit;
+}
 ?>

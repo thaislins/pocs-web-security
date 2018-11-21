@@ -4,7 +4,7 @@ require_once('includes/globals.php');
 $page = 'Dashboard';
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_COOKIE['user'])) {
     header('Location: index.php');
 }
 

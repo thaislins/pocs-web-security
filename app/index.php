@@ -11,7 +11,7 @@ $password = $_GET['lg_password'];
 if ($username and $password) {
 	$error = user_login($username, $password);
 	if (!$error) {
-        $_SESSION['user'] = $username;
+        setcookie("user",$username);
         header('Location: dashboard.php');
         exit();
     }

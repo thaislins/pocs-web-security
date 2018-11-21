@@ -2,15 +2,15 @@
 require_once('../includes/globals.php');
 require_once('../includes/config.php');
 
-$page = 'Search User';
+$page = 'Comments';
 $error = '';
 $success = '';
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_COOKIE['user'])) {
     header('Location: /');
 } else {
     $comment = $_POST['comment'] ?? '';
-    $user_id = select_user_id($_SESSION['user']);
+    $user_id = select_user_id($_COOKIE['user']);
 
     if ($comment and $user_id) {
         $error = post_comment($user_id, $comment);
@@ -21,7 +21,7 @@ if (!isset($_SESSION['user'])) {
     }
 }
 
-$comments = list_comments($_SESSION['user']);
+$comments = list_comments($_COOKIE['user']);
 include('../layout/headers.php');
 ?>
 
@@ -55,7 +55,7 @@ include('../layout/headers.php');
                         <hr>
                         <dl class="inline">
                             <dt>Author</dt>
-                            <dd><?= $_SESSION['user'] ?></dd>
+                            <dd><?= $_COOKIE['user'] ?></dd>
                             <dt>Comment</dt>
                             <dd><?= $comm['comment'] ?></dd>
                         </dl>

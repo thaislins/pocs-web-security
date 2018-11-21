@@ -5,7 +5,7 @@ require_once('../includes/config.php');
 $page = 'Search User';
 $users = false;
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_COOKIE['user'])) {
     header('Location: /');
 } else {
     $username = $_GET['lg_username'];
